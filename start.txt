@@ -1,0 +1,14 @@
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+ros2 launch turtlebot4_viz view_robot.launch.py #rviz실행
+
+ros2 launch turtlebot4_navigation slam.launch.py params:={parameter file}
+
+ros2 launch turtlebot4_navigation nav2.launch.py params_file:='{parameter file}'
+
+ros2 service call /oakd/stop_camera std_srvs/srv/Trigger "{}" #카메라 off
+ros2 service call /oakd/stop_camera std_srvs/srv/Trigger '{}'
+
+ros2 service call /slam_toolbox/save_map slam_toolbox/srv/SaveMap "{name: data: 'map'}"
+
+
